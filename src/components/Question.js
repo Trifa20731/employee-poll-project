@@ -8,13 +8,8 @@ const Question = (props) => {
     <Card style={{ width: '18rem' }}>
       <Card.Body>
         <Card.Title>{props.question.author}</Card.Title>
-        <Card.Title>{props.authedUser}</Card.Title>
         <Card.Text>
           {formatDate(props.question.timestamp)}
-        </Card.Text>
-        <Card.Text>
-          {props.question.optionOne.votes}
-          {props.question.optionTwo.votes}
         </Card.Text>
         <Button variant="primary">Show</Button>
       </Card.Body>

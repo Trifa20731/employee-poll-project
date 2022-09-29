@@ -6,14 +6,14 @@ const Dashboard = (props) => {
     <div>
       <h1>New Question</h1>
       {
-        props.newQuestionIds.map((id) => (
-          <Question key={id} id={id}/>
+        props.newQuestions.map((question) => (
+          <Question key={question.id} id={question.id}/>
         ))
       }
       <h1>Done</h1>
       {
-        props.doneQuestionIds.map((id) => (
-          <Question key={id} id={id}/>
+        props.newQuestions.map((question) => (
+          <Question key={question.id} id={question.id}/>
         ))
       }
     </div>
@@ -22,21 +22,27 @@ const Dashboard = (props) => {
 
 const mapStateToProps = ({ authedUser, questions }) => {
 
-  const newQuestionIds = [];
-  const doneQuestionIds = [];
+  const newQuestions = [];
+  const doneQuestions = [];
   for (const questionId in questions) {
     const question = questions[questionId];
     const votesOptionOne = question.optionOne.votes;
     const votesOptionTwo = question.optionTwo.votes;
     if (votesOptionOne.includes(authedUser) || votesOptionTwo.includes(authedUser)) {
-      doneQuestionIds.push(questionId);
+      doneQuestions.push(question);
     } else {
-      newQuestionIds.push(questionId);
+      newQuestions.push(question);
     }
   };
+  const newQuestionIds = newQuestions.sort(
+    (a, b) => b.timestamp - a.timestamp
+  )
+  const doneQuestionIds = doneQuestions.sort(
+    (a, b) => b.timestamp - a.timestamp
+  )
   return {
-    newQuestionIds,
-    doneQuestionIds
+    newQuestions,
+    doneQuestions
   };
 };
 
