@@ -2,12 +2,17 @@ import { connect } from "react-redux";
 import Question from "./Question";
 
 const Dashboard = (props) => {
-  console.log(props)
   return (
     <div>
-      <h1 className="diaplay-1">Dashboard</h1>
+      <h1>New Question</h1>
       {
-        props.questionIds.map((id) => (
+        props.newQuestionIds.map((id) => (
+          <Question key={id} id={id}/>
+        ))
+      }
+      <h1>Done</h1>
+      {
+        props.doneQuestionIds.map((id) => (
           <Question key={id} id={id}/>
         ))
       }
@@ -15,10 +20,24 @@ const Dashboard = (props) => {
   );
 };
 
-const mapStateToProps = ({ questions }) => ({
-  questionIds: Object.keys(questions).sort(
-    (a, b) => questions[b].timestamp - questions[a].timestamp
-  ),
-});
+const mapStateToProps = ({ authedUser, questions }) => {
+
+  const newQuestionIds = [];
+  const doneQuestionIds = [];
+  for (const questionId in questions) {
+    const question = questions[questionId];
+    const votesOptionOne = question.optionOne.votes;
+    const votesOptionTwo = question.optionTwo.votes;
+    if (votesOptionOne.includes(authedUser) || votesOptionTwo.includes(authedUser)) {
+      doneQuestionIds.push(questionId);
+    } else {
+      newQuestionIds.push(questionId);
+    }
+  };
+  return {
+    newQuestionIds,
+    doneQuestionIds
+  };
+};
 
 export default connect(mapStateToProps)(Dashboard);

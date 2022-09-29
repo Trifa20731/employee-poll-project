@@ -7,9 +7,14 @@ const Question = (props) => {
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Body>
-        <Card.Title>{props.author}</Card.Title>
+        <Card.Title>{props.question.author}</Card.Title>
+        <Card.Title>{props.authedUser}</Card.Title>
         <Card.Text>
-          {formatDate(props.timestamp)}
+          {formatDate(props.question.timestamp)}
+        </Card.Text>
+        <Card.Text>
+          {props.question.optionOne.votes}
+          {props.question.optionTwo.votes}
         </Card.Text>
         <Button variant="primary">Show</Button>
       </Card.Body>
@@ -19,8 +24,10 @@ const Question = (props) => {
 
 const mapStateToProps = ({ authedUser, users, questions }, { id }) => {
   const question = questions[id];
-
-  return question;
+  return { 
+    authedUser,
+    question
+  }
 }
 
 export default connect(mapStateToProps)(Question);
