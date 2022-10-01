@@ -21,7 +21,7 @@ const Dashboard = (props) => {
   );
 };
 
-const mapStateToProps = ({ authedUser, questions }) => {
+const mapStateToProps = ({ authedUser, questions, users }) => {
 
   // Get the done questions and new question.
   const newQuestions = [];
@@ -53,7 +53,7 @@ const mapStateToProps = ({ authedUser, questions }) => {
     newQuestionIds,
     doneQuestionIds
   };
-  
+
 };
 
 export default connect(mapStateToProps)(Dashboard);
