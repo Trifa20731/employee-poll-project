@@ -3,6 +3,10 @@ import { connect } from "react-redux";
 import { Button, Card } from "react-bootstrap";
 import { formatDate } from "../utils/helpers";
 
+const navigateToPoll = () => {
+
+};
+
 const Question = (props) => {
   return (
     <Card style={{ width: '18rem' }}>
@@ -11,13 +15,18 @@ const Question = (props) => {
         <Card.Text>
           {formatDate(props.question.timestamp)}
         </Card.Text>
-        <Button variant="primary">Show</Button>
+        <Button 
+          variant="primary"
+          onClick={() => {}}
+        >
+          Show
+        </Button>
       </Card.Body>
     </Card>
   );
 };
 
-const mapStateToProps = ({ authedUser, users, questions }, { id }) => {
+const mapStateToProps = ({ authedUser, questions }, { id }) => {
   const question = questions[id];
   return { 
     authedUser,

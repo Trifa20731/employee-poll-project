@@ -7,14 +7,14 @@ const Dashboard = (props) => {
     <div>
       <h1>New Question</h1>
       {
-        props.newQuestions.map((question) => (
-          <Question key={question.id} id={question.id}/>
+        props.newQuestionIds.map((id) => (
+          <Question key={id} id={id}/>
         ))
       }
       <h1>Done</h1>
       {
-        props.newQuestions.map((question) => (
-          <Question key={question.id} id={question.id}/>
+        props.doneQuestionIds.map((id) => (
+          <Question key={id} id={id}/>
         ))
       }
     </div>
@@ -23,6 +23,7 @@ const Dashboard = (props) => {
 
 const mapStateToProps = ({ authedUser, questions }) => {
 
+  // Get the done questions and new question.
   const newQuestions = [];
   const doneQuestions = [];
   for (const questionId in questions) {
@@ -35,16 +36,24 @@ const mapStateToProps = ({ authedUser, questions }) => {
       newQuestions.push(question);
     }
   };
-  const newQuestionIds = newQuestions.sort(
+
+  // sort the question
+  const newQuestionSorted = newQuestions.sort(
     (a, b) => b.timestamp - a.timestamp
   )
-  const doneQuestionIds = doneQuestions.sort(
+  const doneQuestionSorted = doneQuestions.sort(
     (a, b) => b.timestamp - a.timestamp
   )
+
+  // get question id.
+  const newQuestionIds = newQuestionSorted.map(question => question.id)
+  const doneQuestionIds = doneQuestionSorted.map(question => question.id)
+
   return {
-    newQuestions,
-    doneQuestions
+    newQuestionIds,
+    doneQuestionIds
   };
+  
 };
 
 export default connect(mapStateToProps)(Dashboard);

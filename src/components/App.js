@@ -2,6 +2,8 @@ import { React, useEffect } from "react";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import Dashboard from "./Dashboard";
+import Poll from "./Poll";
+import { LoadingBar } from "react-redux-loading-bar";
 
 const App = (props) => {
   useEffect(() => {
@@ -10,7 +12,8 @@ const App = (props) => {
 
   return (
     <div>
-      {props.loading === true ? null : <Dashboard />}
+      <LoadingBar/>
+      {props.loading === true ? null : <Poll />}
     </div>
   );
 }
