@@ -1,10 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Button, Card, Container, Row, Col } from "react-bootstrap";
-import { formatDate } from "../utils/helpers";
-import Option from "./Option";
+import { formatDate, isQuestionAnsweredByUser } from "../utils/helpers";
+import { handleAnswerQuestion } from "../actions/shared";
 
 const Poll = (props) => {
+
+  const handlePickOption = (option, e) => {
+    e.preventDefault();
+    const  { dispatch, authedUser, question } = props;
+    dispatch(
+      handleAnswerQuestion({
+        authedUser: authedUser,
+        qid: question.id,
+        answer: option,
+      })
+    );
+  };
 
   return (
     <Container>
@@ -15,28 +27,35 @@ const Poll = (props) => {
       <Row>Would You Rather</Row>
       <Row>
         <Col>
-          <Option text={props.question.optionOne.text}/>
+          <Card style={{ width: "18rem" }}>
+            <Card.Body>
+              <Card.Title>{props.question.optionOne.text}</Card.Title>
+              <Button variant="primary" onClick={(e) => handlePickOption("optionOne", e)}>
+                Click
+              </Button>
+            </Card.Body>
+          </Card>
         </Col>
         <Col>
-          <Option text={props.question.optionTwo.text}/>
+          <Card style={{ width: "18rem" }}>
+            <Card.Body>
+              <Card.Title>{props.question.optionTwo.text}</Card.Title>
+              <Button variant="primary" onClick={(e) => handlePickOption("optionTwo", e)}>
+                Click
+              </Button>
+            </Card.Body>
+          </Card>
         </Col>
       </Row>
     </Container>
   );
 };
 
-const mapStateToProps = ({ authedUser, questions }, { id }) => {
-  const TMP_ID = "8xf0y6ziyjabvozdd253nd";
-  const isAnswered = false;
-  const question = questions[TMP_ID];
-  const votesOptionOne = question.optionOne.votes;
-  const votesOptionTwo = question.optionTwo.votes;
-  if (
-    votesOptionOne.includes(authedUser) ||
-    votesOptionTwo.includes(authedUser)
-  ) {
-    isAnswered = true;
-  }
+const mapStateToProps = ({ authedUser, questions, users }, { id }) => {
+  const TMP_QUESTION_ID = "8xf0y6ziyjabvozdd253nd";
+  const question = questions[TMP_QUESTION_ID];
+  const user = users[authedUser];
+  var isAnswered = isQuestionAnsweredByUser(user, TMP_QUESTION_ID);
   return {
     authedUser,
     question,

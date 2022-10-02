@@ -21,6 +21,7 @@ const Dashboard = (props) => {
   );
 };
 
+// TODO: Change the state conversion.
 const mapStateToProps = ({ authedUser, questions, users }) => {
 
   // Get the done questions and new question.
