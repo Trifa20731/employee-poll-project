@@ -1,6 +1,7 @@
 export const RECEIVE_USERS = "RECEIVE_USERS";
 export const ADD_ANSWERED_RECORD = "ADD_ANSWERED_RECORD";
 export const REMOVE_ANSWERED_RECORD = "REMOVE_ANSWERED_RECORD";
+export const SAVE_USER_QUESTION_RECORD = "SAVE_USER_QUESTION_RECORD";
 
 export function receiveUsers(users) {
   return {
@@ -24,5 +25,12 @@ export function removeAnsweredRecord({ authedUser, qid, answer }) {
     authedUser,
     qid,
     answer,
+  }
+}
+
+export function saveUserQuestionRecord(question) {
+  return {
+    type: SAVE_USER_QUESTION_RECORD,
+    question
   }
 }

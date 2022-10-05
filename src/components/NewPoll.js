@@ -26,7 +26,7 @@ const NewPoll = (props) => {
         <div>
             <h1>Would You Rather</h1>
             <h2>Create Your Own Poll</h2>
-            <Form>
+            <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>First Option</Form.Label>
                     <Form.Control
