@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { connect } from "react-redux";
 import { Button, Form } from "react-bootstrap";
+import { handleSaveQuestion } from "../actions/shared";
 
 const NewPoll = (props) => {
     const [optionOneText, setOptionOneText] = useState("");
@@ -15,6 +16,7 @@ const NewPoll = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        
         console.log(
             `new question with option one ${optionOneText}, with option two ${optionTwoText}`
         );
