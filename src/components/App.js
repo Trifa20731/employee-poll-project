@@ -1,11 +1,15 @@
-import { React, useEffect } from "react";
+import { React, useEffect, Fragment } from "react";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
+import { LoadingBar } from "react-redux-loading-bar";
+import { Route, Routes } from "react-router-dom";
+
+import Login from "./Login";
+import Navigation from "./Navigation";
 import Dashboard from "./Dashboard";
 import LeaderBoard from "./LeaderBoard";
-import NewPoll from "./NewPoll";
-import Poll from "./Poll";
-import { LoadingBar } from "react-redux-loading-bar";
+import NewQuestion from "./NewQuestion";
+import Question from "./Question";
 
 const App = (props) => {
   useEffect(() => {
@@ -14,14 +18,31 @@ const App = (props) => {
 
   return (
     <div>
-      <LoadingBar/>
-      {props.loading === true ? null : <NewPoll />}
+      <LoadingBar />
+      <div>
+        {props.loading === true ? (
+          <div>
+            <Routes>
+              <Route path="/" exact element={<Login />} />
+            </Routes>
+          </div>
+        ) : (
+          <div>
+            <Navigation />
+            <Routes>
+              <Route path="/home" element={<Dashboard />} />
+              <Route path="/leaderboard" element={<LeaderBoard />} />
+              <Route path="/new" element={<NewQuestion />} />
+            </Routes>
+          </div>
+        )}
+      </div>
     </div>
   );
-}
+};
 
 const mapStateToProps = ({ authedUser }) => ({
-    loading: authedUser === null,
+  loading: authedUser === null,
 });
 
 export default connect(mapStateToProps)(App);
