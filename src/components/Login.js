@@ -7,6 +7,8 @@ const Login = (props) => {
   const [passwordText, setPasswordText] = useState("");
 
   const isButtonDisable = () => userText === "" || passwordText === "";
+  const isUserExist = () => props.users[userText] !== undefined;
+  const isUserPasswordCorrect = () => props.users[userText].password === passwordText;
 
   const handleChange = (e, setText) => {
     const text = e.target.value;
@@ -15,6 +17,15 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if(isUserExist()) {
+      if (isUserPasswordCorrect()) {
+        console.log("log in pass.");
+      } else {
+        console.log("wrong password");
+      }
+    } else {
+      console.log("unexist user.")
+    }
     setUserText("");
     setPasswordText("");
   };
@@ -23,7 +34,7 @@ const Login = (props) => {
     <div>
       <h1>Employee Poll</h1>
       <h2>Log In</h2>
-      <Form onSubmit={() => {}}>
+      <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>User</Form.Label>
           <Form.Control
@@ -33,11 +44,10 @@ const Login = (props) => {
             onChange={(e) => handleChange(e, setUserText)}
           />
         </Form.Group>
-
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
-            type="text"
+            type="password"
             placeholder="Password"
             value={passwordText}
             onChange={(e) => handleChange(e, setPasswordText)}
