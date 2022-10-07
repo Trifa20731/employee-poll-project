@@ -23,7 +23,7 @@ const App = (props) => {
         {props.loading === true ? (
           <div>
             <Routes>
-              <Route path="/" exact element={<Login />} />
+              <Route exact path="/" element={<Login />} />
             </Routes>
           </div>
         ) : (
@@ -33,6 +33,8 @@ const App = (props) => {
               <Route path="/home" element={<Dashboard />} />
               <Route path="/leaderboard" element={<LeaderBoard />} />
               <Route path="/new" element={<NewQuestion />} />
+              <Route path="/question/:question_id" element={<Question/>} />
+              <Route exact path="/" element={<Login />} />
             </Routes>
           </div>
         )}

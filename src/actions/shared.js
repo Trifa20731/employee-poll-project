@@ -17,12 +17,7 @@ import { showLoading, hideLoading } from "react-redux-loading-bar";
 
 export function handleSetAuthedUser(id) {
   return (dispatch) => {
-    dispatch(showLoading());
-    return setAuthedUser(id)
-      .then((id) => {
-        dispatch(setAuthedUser(id));
-      })
-      .then(() => dispatch(hideLoading()));
+    return dispatch(setAuthedUser(id));
   };
 }
 

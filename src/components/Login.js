@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { connect } from "react-redux";
 import { Button, Form } from "react-bootstrap";
+import { handleSetAuthedUser } from "../actions/shared";
+import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
   const [userText, setUserText] = useState("");
@@ -19,7 +21,8 @@ const Login = (props) => {
     e.preventDefault();
     if(isUserExist()) {
       if (isUserPasswordCorrect()) {
-        console.log("log in pass.");
+        props.dispatch(handleSetAuthedUser(props.users[userText]));
+
       } else {
         console.log("wrong password");
       }
