@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import '../css/Navigation.css'
 
 const Navigation = () => {
   return (
@@ -12,6 +13,9 @@ const Navigation = () => {
         </li>
         <li>
           <Link to="/new">New</Link>
+        </li>
+        <li>
+          <Link class="active" to="/">Log Out</Link>
         </li>
       </ul>
     </nav>

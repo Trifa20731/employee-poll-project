@@ -2,8 +2,17 @@ import React from "react"
 import { connect } from "react-redux";
 import { Button, Card } from "react-bootstrap";
 import { formatDate } from "../utils/helpers";
+import { useNavigate } from "react-router-dom";
 
 const QuestionItem = (props) => {
+
+  const navigate = useNavigate();
+
+  const handleGoToQuestion = (event, id) => {
+    event.preventDefault();
+    navigate(`/question/${id}`);
+  };
+
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Body>
@@ -13,7 +22,7 @@ const QuestionItem = (props) => {
         </Card.Text>
         <Button 
           variant="primary"
-          onClick={() => {}}
+          onClick={(event) => handleGoToQuestion(event, props.id)}
         >
           Show
         </Button>

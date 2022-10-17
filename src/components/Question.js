@@ -1,21 +1,37 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Button, Card, Container, Row, Col } from "react-bootstrap";
-import { formatDate, isQuestionAnsweredByUser } from "../utils/helpers";
+import { isQuestionAnsweredByUser } from "../utils/helpers";
 import { handleAnswerQuestion } from "../actions/shared";
+import { Link} from "react-router-dom";
+
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+
+const withRouter = (Component) => {
+  const ComponentWithRouterProp = (props) => {
+    let location = useLocation();
+    let navigate = useNavigate();
+    let params = useParams();
+    return <Component {...props} router={{ location, navigate, params }} />;
+  };
+  return ComponentWithRouterProp;
+}
 
 const Question = (props) => {
+
+  const navigate = useNavigate();
 
   const handlePickOption = (option, e) => {
     e.preventDefault();
     const  { dispatch, authedUser, question } = props;
     dispatch(
       handleAnswerQuestion({
-        authedUser: authedUser,
+        authedUser: authedUser.id,
         qid: question.id,
         answer: option,
       })
     );
+    navigate("/home");
   };
 
   return (
@@ -51,16 +67,18 @@ const Question = (props) => {
   );
 };
 
-const mapStateToProps = ({ authedUser, questions, users }, { id }) => {
+const mapStateToProps = ({ authedUser, questions, users }, props) => {
+  const { id } = props.router.params;
   const TMP_QUESTION_ID = "8xf0y6ziyjabvozdd253nd";
   const question = questions[TMP_QUESTION_ID];
-  const user = users[authedUser];
+  const user = users[authedUser.id];
   var isAnswered = isQuestionAnsweredByUser(user, TMP_QUESTION_ID);
   return {
+    id,
     authedUser,
     question,
     isAnswered,
   };
 };
 
-export default connect(mapStateToProps)(Question);
+export default withRouter(connect(mapStateToProps)(Question));

@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 import QuestionItem from "./QuestionItem";
 
-
 const Dashboard = (props) => {
   // console.log(props.newQuestionIds);
   // console.log(props.doneQuestionIds);

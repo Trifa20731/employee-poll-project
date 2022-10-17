@@ -18,7 +18,7 @@ const App = (props) => {
   }, []);
 
   return (
-    <div>
+    <Fragment>
       <LoadingBar />
       <div>
         { props.loading === true ? (
@@ -35,13 +35,13 @@ const App = (props) => {
               <Route path="/home" element={<Dashboard />} />
               <Route path="/leaderboard" element={<LeaderBoard />} />
               <Route path="/new" element={<NewQuestion />} />
-              <Route path="/question/:question_id" element={<Question/>} />
+              <Route path="/question/:id" element={<Question/>} />
               <Route exact path="/" element={<Login />} />
             </Routes>
           </div>
         )}
       </div>
-    </div>
+    </Fragment>
   );
 };
 

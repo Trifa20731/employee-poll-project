@@ -2,8 +2,11 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import { Button, Form } from "react-bootstrap";
 import { handleSaveQuestion } from "../actions/shared";
+import { useNavigate } from "react-router-dom";
 
 const NewQuestion = (props) => {
+
+  const navigate = useNavigate();
   const [optionOneText, setOptionOneText] = useState("");
   const [optionTwoText, setOptionTwoText] = useState("");
 
@@ -19,11 +22,12 @@ const NewQuestion = (props) => {
     const question = {
       optionOneText: optionOneText,
       optionTwoText: optionTwoText,
-      author: props.authedUser,
+      author: props.authedUser.id,
     };
     props.dispatch(handleSaveQuestion(question));
     setOptionOneText("");
     setOptionTwoText("");
+    navigate("/home");
   };
 
   return (
