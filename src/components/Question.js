@@ -24,9 +24,6 @@ const Question = (props) => {
   const handlePickOption = (option, e) => {
     e.preventDefault();
     const  { dispatch, authedUser, question } = props;
-    //console.log(authedUser.id);
-    //console.log(question.id);
-    //console.log(option);
     dispatch(
       handleAnswerQuestion({
         authedUser: authedUser.id,
