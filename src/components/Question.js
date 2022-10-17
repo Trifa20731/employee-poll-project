@@ -24,6 +24,9 @@ const Question = (props) => {
   const handlePickOption = (option, e) => {
     e.preventDefault();
     const  { dispatch, authedUser, question } = props;
+    //console.log(authedUser.id);
+    //console.log(question.id);
+    //console.log(option);
     dispatch(
       handleAnswerQuestion({
         authedUser: authedUser.id,
@@ -69,10 +72,9 @@ const Question = (props) => {
 
 const mapStateToProps = ({ authedUser, questions, users }, props) => {
   const { id } = props.router.params;
-  const TMP_QUESTION_ID = "8xf0y6ziyjabvozdd253nd";
-  const question = questions[TMP_QUESTION_ID];
+  const question = questions[id];
   const user = users[authedUser.id];
-  var isAnswered = isQuestionAnsweredByUser(user, TMP_QUESTION_ID);
+  var isAnswered = isQuestionAnsweredByUser(user, id);
   return {
     id,
     authedUser,

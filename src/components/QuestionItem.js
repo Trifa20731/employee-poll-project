@@ -34,6 +34,7 @@ const QuestionItem = (props) => {
 const mapStateToProps = ({ authedUser, questions }, { id }) => {
   const question = questions[id];
   return { 
+    id,
     authedUser,
     question
   }
