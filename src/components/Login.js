@@ -5,8 +5,10 @@ import { handleSetAuthedUser } from "../actions/shared";
 import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
+  const navigate = useNavigate();
   const [userText, setUserText] = useState("");
   const [passwordText, setPasswordText] = useState("");
+
 
   const isButtonDisable = () => userText === "" || passwordText === "";
   const isUserExist = () => props.users[userText] !== undefined;
@@ -22,7 +24,7 @@ const Login = (props) => {
     if(isUserExist()) {
       if (isUserPasswordCorrect()) {
         props.dispatch(handleSetAuthedUser(props.users[userText]));
-
+        navigate("/home");
       } else {
         console.log("wrong password");
       }
@@ -35,7 +37,7 @@ const Login = (props) => {
 
   return (
     <div>
-      <h1>Employee Poll</h1>
+      <h1>Employee Polls</h1>
       <h2>Log In</h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">

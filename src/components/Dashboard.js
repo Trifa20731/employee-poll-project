@@ -3,6 +3,8 @@ import QuestionItem from "./QuestionItem";
 
 
 const Dashboard = (props) => {
+  // console.log(props.newQuestionIds);
+  // console.log(props.doneQuestionIds);
   return (
     <div>
       <h1>New Question</h1>
@@ -31,7 +33,7 @@ const mapStateToProps = ({ authedUser, questions, users }) => {
     const question = questions[questionId];
     const votesOptionOne = question.optionOne.votes;
     const votesOptionTwo = question.optionTwo.votes;
-    if (votesOptionOne.includes(authedUser) || votesOptionTwo.includes(authedUser)) {
+    if (votesOptionOne.includes(authedUser.id) || votesOptionTwo.includes(authedUser.id)) {
       doneQuestions.push(question);
     } else {
       newQuestions.push(question);
