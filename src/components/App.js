@@ -10,6 +10,7 @@ import Dashboard from "./Dashboard";
 import LeaderBoard from "./LeaderBoard";
 import NewQuestion from "./NewQuestion";
 import Question from "./Question";
+import PageNotFound from "./PageNotFound";
 
 const App = (props) => {
   useEffect(() => {
@@ -20,10 +21,11 @@ const App = (props) => {
     <div>
       <LoadingBar />
       <div>
-        {props.loading === true ? (
+        { props.loading === true ? (
           <div>
             <Routes>
               <Route exact path="/" element={<Login />} />
+              <Route path="*" element= {<PageNotFound />} />
             </Routes>
           </div>
         ) : (
