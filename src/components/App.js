@@ -4,7 +4,7 @@ import { handleInitialData } from "../actions/shared";
 import { LoadingBar } from "react-redux-loading-bar";
 import { Route, Routes } from "react-router-dom";
 
-import Login from "./Login";
+import Login from "./login/Login";
 import Navigation from "./Navigation";
 import Dashboard from "./Dashboard";
 import LeaderBoard from "./LeaderBoard";

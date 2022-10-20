@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { connect } from "react-redux";
 import { Button, Form } from "react-bootstrap";
-import { handleSetAuthedUser } from "../actions/shared";
+import { handleSetAuthedUser } from "../../actions/shared";
 import { useNavigate } from "react-router-dom";
-import Logo from "../images/school.png";
-import "../css/Login.css"
+import Logo from "../../images/school.png";
+import "../../css/Login.css"
 
 const Login = (props) => {
   const navigate = useNavigate();

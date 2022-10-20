@@ -18,8 +18,21 @@ export function formateUser (userId, user) {
   };
 }
 
-export function formateQuestion () {
-  
+export function formateQuestion (questionItem) {
+  const optionOneText = questionItem.optionOne.text;
+  const optionTwoText = questionItem.optionTwo.text;
+  const optionOneVoteAmount = questionItem.optionOne.votes.length;
+  const optionTwoVoteAmount = questionItem.optionTwo.votes.length;
+  const totalVoteAmount = optionOneVoteAmount + optionTwoVoteAmount
+  return {
+    id: questionItem.id,
+    author: questionItem.author,
+    optionOneText: optionOneText,
+    optionTwoText: optionTwoText,
+    optionOneVoteAmount: optionOneVoteAmount,
+    optionTwoVoteAmount: optionTwoVoteAmount,
+    totalVoteAmount: totalVoteAmount
+  };
 }
 
 export function isQuestionAnsweredByUser(user, questionId) {
@@ -28,10 +41,8 @@ export function isQuestionAnsweredByUser(user, questionId) {
   if (Object.entries(user.answers).length !== 0) {
     answersIds = Object.keys(user.answers).map(answer => answer);
     if(answersIds.includes(questionId)){
-      isAnswered = false
+      isAnswered = true;
     }
   }
-  return {
-    isAnswered
-  };
+  return isAnswered;
 }
