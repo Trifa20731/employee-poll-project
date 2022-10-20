@@ -8,6 +8,12 @@ ul {
 
 li {
   float: left;
+  border-right:1px solid #bbb;
+}
+
+li:last-child {
+  float: right;
+  border-right: none;
 }
 
 li a {

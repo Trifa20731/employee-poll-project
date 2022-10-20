@@ -1,7 +1,14 @@
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { handleSetAuthedUser } from "../actions/shared";
 import '../css/Navigation.css'
 
-const Navigation = () => {
+const Navigation = (props) => {
+
+  const handleLogOut = () => {
+    props.dispatch(handleSetAuthedUser(null));
+  }
+
   return (
     <nav>
       <ul>
@@ -15,11 +22,17 @@ const Navigation = () => {
           <Link to="/new">New</Link>
         </li>
         <li>
-          <Link class="active" to="/">Log Out</Link>
+          <Link className="active" to="/" onClick={() =>handleLogOut()}>Log Out</Link>
         </li>
       </ul>
     </nav>
   );
 };
 
-export default Navigation;
+const mapStateToProps = ({ authedUser }) => {
+  return {
+    authedUser
+  };
+};
+
+export default connect(mapStateToProps)(Navigation);

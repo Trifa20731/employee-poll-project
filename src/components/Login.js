@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { Button, Form } from "react-bootstrap";
 import { handleSetAuthedUser } from "../actions/shared";
 import { useNavigate } from "react-router-dom";
+import Logo from "../images/school.png";
+import "../css/Login.css"
 
 const Login = (props) => {
   const navigate = useNavigate();
@@ -37,9 +39,10 @@ const Login = (props) => {
 
   return (
     <div>
-      <h1>Employee Polls</h1>
-      <h2>Log In</h2>
-      <Form onSubmit={handleSubmit}>
+      <h1 className="title">Employee Polls</h1>
+      <img className="logo" src={Logo} alt="logo"/>
+      <h2 className="subtitle">Log In</h2>
+      <Form className="form" onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>User</Form.Label>
           <Form.Control
@@ -58,7 +61,7 @@ const Login = (props) => {
             onChange={(e) => handleChange(e, setPasswordText)}
           />
         </Form.Group>
-        <Button variant="primary" type="submit" disabled={isButtonDisable()}>
+        <Button className="button" variant="primary" type="submit" disabled={isButtonDisable()}>
           Submit
         </Button>
       </Form>
@@ -70,7 +73,7 @@ const mapStateToProps = ({ authedUser, users }) => {
   return {
     authedUser,
     users
-  }
+  };
 };
 
 export default connect(mapStateToProps)(Login);
