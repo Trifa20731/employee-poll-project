@@ -3,17 +3,12 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: #9bccfd;
 }
 
 li {
   float: left;
-  border-right:1px solid #bbb;
-}
-
-li:last-child {
-  float: right;
-  border-right: none;
+  border-right: 1px solid #ffffff;
 }
 
 li a {
@@ -25,9 +20,30 @@ li a {
 }
 
 li a:hover:not(.active) {
-  background-color: #111;
+  background-color: #0074dd;
+  color: white;
 }
 
-.active {
-  background-color: #04AA6D;
+.authedUserItemLi {
+  float: right;
+  border-right: none;
+  font-weight: bold;
+  width: 10%;
+  text-align: center;
+  color: white;
+}
+
+.authedUserIconLi {
+  float: right;
+  border-right: none;
+}
+
+.authedUserIcon {
+  width: 50px;
+}
+
+.logOutItemLi {
+  float: right;
+  border-right: none;
+  background-color: #81599f;
 }

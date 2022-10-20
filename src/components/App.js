@@ -30,7 +30,7 @@ const App = (props) => {
           </div>
         ) : (
           <div>
-            <Navigation />
+            <Navigation authedUser={props.authedUser} />
             <Routes>
               <Route path="/home" element={<Dashboard />} />
               <Route path="/leaderboard" element={<LeaderBoard />} />
@@ -45,8 +45,11 @@ const App = (props) => {
   );
 };
 
-const mapStateToProps = ({ authedUser }) => ({
-  loading: authedUser === null,
-});
+const mapStateToProps = ({ authedUser }) => {
+  return {
+    authedUser,
+    loading: authedUser === null,
+  }
+};
 
 export default connect(mapStateToProps)(App);

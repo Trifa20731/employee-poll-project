@@ -21,8 +21,18 @@ const Navigation = (props) => {
         <li>
           <Link to="/new">New</Link>
         </li>
-        <li>
-          <Link className="active" to="/" onClick={() =>handleLogOut()}>Log Out</Link>
+        <li className="logOutItemLi">
+          <Link to="/" onClick={() =>handleLogOut()}>Log Out</Link>
+        </li>
+        <li className="authedUserItemLi">
+          {props.authedUser.name}
+        </li>
+        <li className="authedUserIconLi">
+          <img 
+            className="authedUserIcon"
+            src={props.authedUser.avatarURL} 
+            alt="authedUser icon" 
+          />
         </li>
       </ul>
     </nav>

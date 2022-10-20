@@ -1,0 +1,24 @@
+.title {
+  text-align: center;
+  margin-top: 70px;
+  margin-bottom: 30px;
+}
+
+.subtitle {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.questionAuthorIcon {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+}
+
+.questionRow {
+  text-align: center;
+  margin-left: 20%;
+  margin-right: 20%;
+}

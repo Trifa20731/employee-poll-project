@@ -1,8 +1,9 @@
 import React from "react"
 import { connect } from "react-redux";
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, Col } from "react-bootstrap";
 import { formatDate } from "../utils/helpers";
 import { useNavigate } from "react-router-dom";
+import "../css/QuestionItem.css"
 
 const QuestionItem = (props) => {
 
@@ -14,20 +15,22 @@ const QuestionItem = (props) => {
   };
 
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Body>
-        <Card.Title>{props.question.author}</Card.Title>
-        <Card.Text>
-          {formatDate(props.question.timestamp)}
-        </Card.Text>
-        <Button 
-          variant="primary"
-          onClick={(event) => handleGoToQuestion(event, props.id)}
-        >
-          Show
-        </Button>
-      </Card.Body>
-    </Card>
+    <Col>
+      <Card border="primary" style={{ width: '18rem' }}  className="item">
+        <Card.Body>
+          <Card.Title>{props.question.author}</Card.Title>
+          <Card.Text>
+            {formatDate(props.question.timestamp)}
+          </Card.Text>
+          <Button 
+            variant="primary"
+            onClick={(event) => handleGoToQuestion(event, props.id)}
+          >
+            Show
+          </Button>
+        </Card.Body>
+      </Card>
+    </Col>
   );
 };
 

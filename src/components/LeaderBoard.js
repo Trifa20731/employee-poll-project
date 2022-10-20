@@ -2,12 +2,14 @@ import React from "react";
 import { connect } from "react-redux";
 import { Table } from "react-bootstrap";
 import { formateUser } from "../utils/helpers";
+import LeaderBoardTd from "./LeaderBoardItem";
+import "../css/LeaderBoard.css"
 
 const LeaderBoard = (props) => {
   return (
-    <Table striped bordered hover size="sm">
+    <Table striped bordered hover size="sm" className="rankingTable">
       <thead>
-        <tr>
+        <tr className="tableHead">
           <th colSpan={2}>Users</th>
           <th>Answered</th>
           <th>Created</th>
@@ -16,7 +18,11 @@ const LeaderBoard = (props) => {
       <tbody>
         {props.newUsersSorted.map((user) => (
           <tr key={user.id}>
-            <td colSpan={2}>{user.name}</td>
+            <LeaderBoardTd 
+              name={user.name}
+              id={user.id}
+              url={user.avatarURL}
+            />
             <td>{user.numOfAnswered}</td>
             <td>{user.numOfCreated}</td>
           </tr>

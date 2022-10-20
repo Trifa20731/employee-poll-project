@@ -32,9 +32,9 @@ const NewQuestion = (props) => {
 
   return (
     <div>
-      <h1>Would You Rather</h1>
-      <h2>Create Your Own Poll</h2>
-      <Form onSubmit={handleSubmit}>
+      <h1 className="title">Would You Rather</h1>
+      <h2 className="subtitle">Create Your Own Poll</h2>
+      <Form onSubmit={handleSubmit} className="form">
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>First Option</Form.Label>
           <Form.Control
@@ -54,7 +54,11 @@ const NewQuestion = (props) => {
             onChange={(e) => handleChange(e, setOptionTwoText)}
           />
         </Form.Group>
-        <Button variant="primary" type="submit" disabled={isButtonDisable()}>
+        <Button 
+          className="button"
+          variant="primary" 
+          type="submit" 
+          disabled={isButtonDisable()}>
           Submit
         </Button>
       </Form>

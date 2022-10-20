@@ -1,0 +1,11 @@
+.icon {
+  width: 100px;
+}
+
+.userName {
+  font-weight: bold;
+}
+
+.userId {
+  color: gray;
+}

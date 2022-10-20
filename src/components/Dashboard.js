@@ -1,23 +1,29 @@
 import { connect } from "react-redux";
 import QuestionItem from "./QuestionItem";
+import { Row } from "react-bootstrap";
+import "../css/Dashboard.css"
 
 const Dashboard = (props) => {
   // console.log(props.newQuestionIds);
   // console.log(props.doneQuestionIds);
   return (
-    <div>
-      <h1>New Question</h1>
-      {
-        props.newQuestionIds.map((id) => (
-          <QuestionItem key={id} id={id}/>
-        ))
-      }
-      <h1>Done</h1>
-      {
-        props.doneQuestionIds.map((id) => (
-          <QuestionItem key={id} id={id}/>
-        ))
-      }
+    <div className="container">
+      <h1 className="title">New Question</h1>
+        <Row xs={1} md={4}>
+          {
+            props.newQuestionIds.map((id) => (
+              <QuestionItem key={id} id={id}/>
+            ))
+          }
+        </Row>
+      <h1 className="title">Done</h1>
+        <Row xs={1} md={4}>
+          {
+            props.doneQuestionIds.map((id) => (
+              <QuestionItem key={id} id={id}/>
+            ))
+          }
+        </Row>
     </div>
   );
 };
