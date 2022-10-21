@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import QuestionItem from "./QuestionItem";
 import { Row } from "react-bootstrap";
-import "../css/Dashboard.css"
+import "../../css/Dashboard.css"
 
 const Dashboard = (props) => {
   // console.log(props.newQuestionIds);
@@ -29,7 +29,7 @@ const Dashboard = (props) => {
 };
 
 // TODO: Change the state conversion.
-const mapStateToProps = ({ authedUser, questions, users }) => {
+const mapStateToProps = ({ authedUser, questions }) => {
 
   // Get the done questions and new question.
   const newQuestions = [];

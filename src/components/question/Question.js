@@ -1,14 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
-import { formateQuestion, isQuestionAnsweredByUser } from "../utils/helpers";
-import { handleAnswerQuestion } from "../actions/shared";
+import { formateQuestion, isQuestionAnsweredByUser } from "../../utils/helpers";
+import { handleAnswerQuestion } from "../../actions/shared";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
-import UnansweredQuestionCard from "./question/UnansweredQuestionCard";
-import AnsweredQuestionCard from "./question/AnsweredQuestionCard";
+import UnansweredQuestionCard from "./UnansweredQuestionCard";
+import AnsweredQuestionCard from "./AnsweredQuestionCard";
 
-import "../css/Question.css";
+import "../../css/Question.css";
 
 const withRouter = (Component) => {
   const ComponentWithRouterProp = (props) => {

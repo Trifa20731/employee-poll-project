@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Table } from "react-bootstrap";
-import { formateUser } from "../utils/helpers";
-import LeaderBoardTd from "./LeaderBoardItem";
-import "../css/LeaderBoard.css"
+import { formateUser } from "../../utils/helpers";
+import LeaderBoardItem from "./LeaderBoardItem";
+import "../../css/LeaderBoard.css"
 
 const LeaderBoard = (props) => {
   return (
@@ -17,15 +17,14 @@ const LeaderBoard = (props) => {
       </thead>
       <tbody>
         {props.newUsersSorted.map((user) => (
-          <tr key={user.id}>
-            <LeaderBoardTd 
-              name={user.name}
-              id={user.id}
-              url={user.avatarURL}
-            />
-            <td>{user.numOfAnswered}</td>
-            <td>{user.numOfCreated}</td>
-          </tr>
+          <LeaderBoardItem
+            key={user.id}
+            name={user.name}
+            id={user.id}
+            url={user.avatarURL}
+            numOfAnswered={user.numOfAnswered}
+            numOfCreated={user.numOfCreated}
+          />
         ))}
       </tbody>
     </Table>

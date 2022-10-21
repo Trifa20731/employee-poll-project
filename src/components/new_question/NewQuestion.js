@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { connect } from "react-redux";
 import { Button, Form } from "react-bootstrap";
-import { handleSaveQuestion } from "../actions/shared";
+import { handleSaveQuestion } from "../../actions/shared";
 import { useNavigate } from "react-router-dom";
 
 const NewQuestion = (props) => {
 
   const navigate = useNavigate();
+  
   const [optionOneText, setOptionOneText] = useState("");
   const [optionTwoText, setOptionTwoText] = useState("");
 
@@ -35,7 +36,7 @@ const NewQuestion = (props) => {
       <h1 className="title">Would You Rather</h1>
       <h2 className="subtitle">Create Your Own Poll</h2>
       <Form onSubmit={handleSubmit} className="form">
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Group className="mb-3">
           <Form.Label>First Option</Form.Label>
           <Form.Control
             type="text"
@@ -44,8 +45,7 @@ const NewQuestion = (props) => {
             onChange={(e) => handleChange(e, setOptionOneText)}
           />
         </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Group className="mb-3">
           <Form.Label>Second Option</Form.Label>
           <Form.Control
             type="text"

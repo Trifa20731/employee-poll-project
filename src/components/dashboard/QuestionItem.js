@@ -1,9 +1,9 @@
 import React from "react"
 import { connect } from "react-redux";
 import { Button, Card, Col } from "react-bootstrap";
-import { formatDate } from "../utils/helpers";
+import { formatDate } from "../../utils/helpers";
 import { useNavigate } from "react-router-dom";
-import "../css/QuestionItem.css"
+import "../../css/QuestionItem.css"
 
 const QuestionItem = (props) => {
 

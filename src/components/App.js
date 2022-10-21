@@ -6,10 +6,10 @@ import { Route, Routes } from "react-router-dom";
 
 import Login from "./login/Login";
 import Navigation from "./Navigation";
-import Dashboard from "./Dashboard";
-import LeaderBoard from "./LeaderBoard";
-import NewQuestion from "./NewQuestion";
-import Question from "./Question";
+import Dashboard from "./dashboard/Dashboard";
+import LeaderBoard from "./leaderboard/LeaderBoard";
+import NewQuestion from "./new_question/NewQuestion";
+import Question from "./question/Question";
 import PageNotFound from "./PageNotFound";
 
 const App = (props) => {
