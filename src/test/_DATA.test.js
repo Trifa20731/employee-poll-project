@@ -1,6 +1,7 @@
 import { _saveQuestion, _saveQuestionAnswer } from '../utils/_DATA';
 
 describe("_saveQuestion", () => {
+  // Test 1.
   it("will return format question if options and author are not null", async () => {
     const availableQuestion = {
       optionOneText: "Go to Japan",
@@ -12,7 +13,7 @@ describe("_saveQuestion", () => {
     expect(result.optionOne.text).toEqual("Go to Japan");
     expect(result.optionTwo.text).toEqual("Go to China");
   });
-
+  // Test 2.
   it("will return an error message if author is undefined", async () => {
     const unavailableQuestion = {
       optionOneText: "Go to Japan",
@@ -25,6 +26,7 @@ describe("_saveQuestion", () => {
 });
 
 describe("_saveQuestionAnswer", () => {
+  // Test 3.
   it("will return true of authedUser, qid and answer are not undefined", async () => {
     const availableQuestionAnswer = {
       authedUser: "tylermcginnis",
@@ -34,7 +36,7 @@ describe("_saveQuestionAnswer", () => {
     var result = await _saveQuestionAnswer(availableQuestionAnswer);
     expect(result).toEqual(true);
   });
-
+  // Test 4.
   it("will return an error message if answer is undefined.", async () => {
     const unavailableQuestionAnswer = {
       authedUser: "tylermcginnis",

@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import AnsweredQuestionCard from '../components/question/AnsweredQuestionCard';
 
 describe('AnsweredQuestionCard', () => {
+  // Test 5.
   it('matches the sanpshot when all parameter passes', () => {
     const component = render(
       <AnsweredQuestionCard

@@ -15,9 +15,9 @@ import { setAuthedUser } from "./authedUser";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
 
 
-export function handleSetAuthedUser(id) {
+export function handleSetAuthedUser(user) {
   return (dispatch) => {
-    return dispatch(setAuthedUser(id));
+    return dispatch(setAuthedUser(user));
   };
 }
 

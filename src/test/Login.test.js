@@ -3,10 +3,10 @@ import * as React from 'react';
 import { Provider } from 'react-redux';
 import { store } from '../index';
 import { BrowserRouter, MemoryRouter } from "react-router-dom";
-import App from '../components/App';
 import Login from '../components/login/Login';
 
 describe('Login Page Test', ()=>{
+  // Test 7.
   it('will have all expected filed', () => {
     const component = render(
       <Provider store={store}>
@@ -30,7 +30,7 @@ describe('Login Page Test', ()=>{
     expect(submitButton).toBeInTheDocument();
 
   });
-
+  // Test 6
   it('will show the error message when enter wrong password', async () => {
     const component = render(
       <Provider store={store}>
@@ -51,13 +51,11 @@ describe('Login Page Test', ()=>{
       expect(userNameInput.value).toBe('tylermcginnis');
       expect(passwordInput.value).toBe('123');
       fireEvent.click(submitButton);
-      const failLoginMsg = component.getByText('wrong password');
+      const failLoginMsg = component.findByText('wrong password');
       expect(failLoginMsg).toBeInTheDocument();
     });
-
-
   });
-
+  // Test 8.
   it('will show the error message when enter unexist username', async () => {
     const component = render(
       <Provider store={store}>
