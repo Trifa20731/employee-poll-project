@@ -8,6 +8,8 @@ const Navigation = (props) => {
     props.dispatch(handleSetAuthedUser(null));
   };
 
+  console.log(props);
+
   return (
     <nav>
       <ul>
