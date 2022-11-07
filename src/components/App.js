@@ -2,7 +2,7 @@ import { React, useEffect, Fragment } from "react";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import { LoadingBar } from "react-redux-loading-bar";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 
 import Login from "./login/Login";
 import Navigation from "./Navigation";
@@ -25,6 +25,10 @@ const App = (props) => {
           <div>
             <Routes>
               <Route exact path="/" element={<Login />} />
+              <Route path="/home" element={ <Navigate to="/" />} />
+              <Route path="/leaderboard" element={ <Navigate to="/" />} />
+              <Route path="/new" element={ <Navigate to="/" />} />
+              <Route path="/question/:id" element={ <Navigate to="/" />} />
               <Route path="*" element= {<PageNotFound />} />
             </Routes>
           </div>
