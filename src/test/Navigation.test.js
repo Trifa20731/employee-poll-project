@@ -52,7 +52,7 @@ describe('Navigation Bar Test', ()=> {
 
     expect(homeLink.href).toBe("http://localhost/home");
     expect(leaderboardLink.href).toBe("http://localhost/leaderboard");
-    expect(newLink.href).toBe("http://localhost/new");
+    expect(newLink.href).toBe("http://localhost/add");
     expect(logoutLink.href).toBe("http://localhost/");
 
   });

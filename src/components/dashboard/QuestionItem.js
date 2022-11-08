@@ -11,7 +11,7 @@ const QuestionItem = (props) => {
 
   const handleGoToQuestion = (event, id) => {
     event.preventDefault();
-    navigate(`/question/${id}`);
+    navigate(`/questions/${id}`);
   };
 
   return (

@@ -27,8 +27,8 @@ const App = (props) => {
               <Route exact path="/" element={<Login />} />
               <Route path="/home" element={ <Navigate to="/" />} />
               <Route path="/leaderboard" element={ <Navigate to="/" />} />
-              <Route path="/new" element={ <Navigate to="/" />} />
-              <Route path="/question/:id" element={ <Navigate to="/" />} />
+              <Route path="/add" element={ <Navigate to="/" />} />
+              <Route path="/questions/:id" element={ <Navigate to="/" />} />
               <Route path="*" element= {<PageNotFound />} />
             </Routes>
           </div>
@@ -38,8 +38,8 @@ const App = (props) => {
             <Routes>
               <Route path="/home" element={<Dashboard />} />
               <Route path="/leaderboard" element={<LeaderBoard />} />
-              <Route path="/new" element={<NewQuestion />} />
-              <Route path="/question/:id" element={<Question/>} />
+              <Route path="/add" element={<NewQuestion />} />
+              <Route path="/questions/:id" element={<Question/>} />
               <Route exact path="/" element={<Login />} />
             </Routes>
           </div>

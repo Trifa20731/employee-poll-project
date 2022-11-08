@@ -24,7 +24,7 @@ const Navigation = (props) => {
           </Link>
         </li>
         <li>
-          <Link to="/new" data-testid='new-link'>New</Link>
+          <Link to="/add" data-testid='new-link'>New</Link>
         </li>
         <li className="logOutItemLi">
           <Link to="/" onClick={() => handleLogOut()} data-testid='logout-link'>
