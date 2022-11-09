@@ -65,7 +65,14 @@ const App = (props) => {
               </RequireAuth>
             }
           />
-          <Route path="*" element={<PageNotFound />} />
+          <Route
+            path="*"
+            element={
+              <RequireAuth>
+                <PageNotFound />
+              </RequireAuth>
+            }
+          />
         </Routes>
       </div>
     </Fragment>
