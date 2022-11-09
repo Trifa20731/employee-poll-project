@@ -30,3 +30,12 @@ To get started developing right away:
 
 ## Note
 
+Project update in 2022.11.09:
+
+- Add the README.MD file.
+- User will be asked to login and redirect to the request page. They should be redirected to the 404 page if page doesn't exist.
+- Add the radio button in the dashboard page to show target question.
+- change the `question/:question_id` route into `questions/:question_id`
+- change the `/new` route into `/add`
+- navigation will show in all pages.
+
