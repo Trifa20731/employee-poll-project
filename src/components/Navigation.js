@@ -26,19 +26,26 @@ const Navigation = (props) => {
         <li>
           <Link to="/add" data-testid='new-link'>New</Link>
         </li>
-        <li className="logOutItemLi">
-          <Link to="/" onClick={() => handleLogOut()} data-testid='logout-link'>
-            Log Out
-          </Link>
-        </li>
-        <li className="authedUserItemLi">{props.authedUser.name}</li>
-        <li className="authedUserIconLi">
-          <img
-            className="authedUserIcon"
-            src={props.authedUser.avatarURL}
-            alt="authedUser icon"
-          />
-        </li>
+        {
+          props.authedUser !== null 
+          ? <>
+              <li className="logOutItemLi">
+                <Link to="/" onClick={() => handleLogOut()} data-testid='logout-link'>
+                  Log Out
+                </Link>
+              </li>
+              <li className="authedUserItemLi">{props.authedUser.name}</li>
+              <li className="authedUserIconLi">
+                <img
+                  className="authedUserIcon"
+                  src={props.authedUser.avatarURL}
+                  alt="authedUser icon"
+                />
+              </li>
+            </>
+          : <></>
+        }
+        
       </ul>
     </nav>
   );

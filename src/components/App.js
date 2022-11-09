@@ -2,7 +2,7 @@ import { React, useEffect, Fragment } from "react";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import { LoadingBar } from "react-redux-loading-bar";
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate, useLocation } from "react-router-dom";
 
 import Login from "./login/Login";
 import Navigation from "./Navigation";
@@ -17,33 +17,56 @@ const App = (props) => {
     props.dispatch(handleInitialData());
   }, []);
 
+  const RequireAuth = ({ children }) => {
+    const location = useLocation();
+    return props.authedUser === null ? (
+      <Navigate to="/" replace state={{ path: location.pathname }} />
+    ) : (
+      children
+    );
+  };
+
   return (
     <Fragment>
       <LoadingBar />
       <div>
-        { props.loading === true ? (
-          <div>
-            <Routes>
-              <Route exact path="/" element={<Login />} />
-              <Route path="/home" element={ <Navigate to="/" />} />
-              <Route path="/leaderboard" element={ <Navigate to="/" />} />
-              <Route path="/add" element={ <Navigate to="/" />} />
-              <Route path="/questions/:id" element={ <Navigate to="/" />} />
-              <Route path="*" element= {<PageNotFound />} />
-            </Routes>
-          </div>
-        ) : (
-          <div>
-            <Navigation authedUser={props.authedUser} />
-            <Routes>
-              <Route path="/home" element={<Dashboard />} />
-              <Route path="/leaderboard" element={<LeaderBoard />} />
-              <Route path="/add" element={<NewQuestion />} />
-              <Route path="/questions/:id" element={<Question/>} />
-              <Route exact path="/" element={<Login />} />
-            </Routes>
-          </div>
-        )}
+        <Navigation authedUser={props.authedUser} />
+        <Routes>
+          <Route exact path="/" element={<Login />} />
+          <Route
+            path="/home"
+            element={
+              <RequireAuth>
+                <Dashboard />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/leaderboard"
+            element={
+              <RequireAuth>
+                <LeaderBoard />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/add"
+            element={
+              <RequireAuth>
+                <NewQuestion />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/questions/:id"
+            element={
+              <RequireAuth>
+                <Question />
+              </RequireAuth>
+            }
+          />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
       </div>
     </Fragment>
   );
@@ -53,7 +76,7 @@ const mapStateToProps = ({ authedUser }) => {
   return {
     authedUser,
     loading: authedUser === null,
-  }
+  };
 };
 
 export default connect(mapStateToProps)(App);

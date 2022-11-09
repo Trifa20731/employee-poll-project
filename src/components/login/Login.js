@@ -2,12 +2,13 @@ import { useState } from "react";
 import { connect } from "react-redux";
 import { Button, Form } from "react-bootstrap";
 import { handleSetAuthedUser } from "../../actions/shared";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Logo from "../../images/school.png";
 import "../../css/Login.css"
 
 const Login = (props) => {
   const navigate = useNavigate();
+  const { state } = useLocation();
   const [userText, setUserText] = useState("");
   const [passwordText, setPasswordText] = useState("");
   const [loginErrorMessage, setLoginErrorMessage] = useState("");
@@ -27,7 +28,7 @@ const Login = (props) => {
     if(isUserExist()) {
       if (isUserPasswordCorrect()) {
         props.dispatch(handleSetAuthedUser(props.users[userText]));
-        navigate("/home");
+        navigate(state?.path || "/home");
       } else {
         console.log("wrong password");
         setLoginErrorMessage("wrong password");
