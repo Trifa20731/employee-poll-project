@@ -39,3 +39,8 @@ Project update in 2022.11.09:
 - change the `/new` route into `/add`
 - navigation will show in all pages.
 
+Project update in 2022.11.10
+
+- The result will be shown after voting
+- When access the new question via address bar, the user will be redirected to login page. After that, they will be redirected to the 404 error page.
+
